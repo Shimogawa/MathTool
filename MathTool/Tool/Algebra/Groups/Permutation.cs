@@ -116,12 +116,17 @@ namespace MathTool.Tool.Algebra.Groups
 
 		public override string ToString()
 		{
-//			if (IsIdentity(this))
-//			{
-//				return "id";
-//			}
+			return ToString(false);
+		}
+
+		public string ToString(bool showAll)
+		{
+			if (!showAll && IsIdentity(this))
+			{
+				return "id";
+			}
 			var sb = new StringBuilder();
-			var isolates = new StringBuilder();
+			var isolates = showAll ? new StringBuilder() : null;
 			bool[] used = new bool[function.Count];
 			
 			int start = Range.Min;
@@ -134,7 +139,8 @@ namespace MathTool.Tool.Algebra.Groups
 				{
 					used[k - Range.Min] = true;
 					num++;
-					isolates.Append($"({k})");
+					if (showAll)
+						isolates.Append($"({k})");
 				}
 			}
 
@@ -164,8 +170,8 @@ namespace MathTool.Tool.Algebra.Groups
 				sb.Remove(sb.Length - 1, 1);
 				sb.Append(')');
 			}
-
-			sb.Append(isolates);
+			if (showAll)
+				sb.Append(isolates);
 			return sb.ToString();
 		}
 

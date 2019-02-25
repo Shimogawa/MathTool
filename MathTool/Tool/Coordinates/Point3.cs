@@ -3,16 +3,14 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using MathTool.Tool.Linear;
 
-/// <summary>
-/// Tools used in math topics.
-/// </summary>
 namespace MathTool.Tool.Coordinates
 {
-    /**
-     * <summary>Describes a point in 3D space.</summary>
-     */
-    public struct Point3
+	/// <summary>
+	/// Describes a point in 3D space.
+	/// </summary>
+	public struct Point3
     {
         /**
          * <summary>The x-axis position</summary>

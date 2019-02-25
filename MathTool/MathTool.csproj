@@ -46,11 +46,11 @@
     <Compile Include="Tool\Coordinates\Cylindrical3.cs" />
     <Compile Include="Tool\Coordinates\Point3.cs" />
     <Compile Include="Tool\Linear\Vector.cs" />
-    <Compile Include="Tool\Numbers\Imaginary.cs" />
+    <Compile Include="Tool\Numbers\Complex.cs" />
     <Compile Include="Tool\Numbers\Real.cs" />
     <Compile Include="Tool\Utils\MathUtil.cs" />
     <Compile Include="Tool\Utils\IntRange.cs" />
-    <Compile Include="Tool\Vector3.cs" />
+    <Compile Include="Tool\Linear\Vector3.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

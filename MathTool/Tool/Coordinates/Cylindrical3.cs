@@ -30,8 +30,13 @@ namespace MathTool.Tool.Coordinates
 
         public static explicit operator Point3(Cylindrical3 c)
         {
-            return new Point3((float)(c.r * Math.Cos(c.theta)), (float)(c.r * Math.Sin(c.theta)), c.z);
+	        return ToEuclidean(c);
         }
+
+        public static Point3 ToEuclidean(Cylindrical3 c)
+        {
+	        return new Point3((float)(c.r * Math.Cos(c.theta)), (float)(c.r * Math.Sin(c.theta)), c.z);
+		}
 
         public override bool Equals(object o)
         {

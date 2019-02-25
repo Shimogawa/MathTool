@@ -9,7 +9,7 @@ namespace MathTool.Tool.Numbers
     /// <summary>
     /// The imaginary number.
     /// </summary>
-    public struct Imaginary
+    public struct Complex
     {
         /// <summary>
         /// The real part
@@ -29,13 +29,13 @@ namespace MathTool.Tool.Numbers
         /// <summary>
         /// i
         /// </summary>
-        public static readonly Imaginary i = new Imaginary(0, 1);
+        public static readonly Complex i = new Complex(0, 1);
 
         /// <summary>
-        /// Real to Imaginary
+        /// Real to Complex
         /// </summary>
         /// <param name="n"></param>
-        public Imaginary(double n)
+        public Complex(double n)
         {
             x = n;
             y = 0;
@@ -48,7 +48,7 @@ namespace MathTool.Tool.Numbers
         /// </summary>
         /// <param name="a"></param>
         /// <param name="b"></param>
-        public Imaginary(double a, double b)
+        public Complex(double a, double b)
         {
             x = a;
             y = b;
@@ -56,63 +56,63 @@ namespace MathTool.Tool.Numbers
             Normal = Math.Sqrt(Math.Pow(x, 2) + Math.Pow(y, 2));
         }
 
-        public static Imaginary operator +(Imaginary i)
+        public static Complex operator +(Complex i)
             => i;
 
-        public static Imaginary operator +(Imaginary i1, Imaginary i2)
-            => new Imaginary(i1.x + i2.x, i1.y + i2.y);
+        public static Complex operator +(Complex i1, Complex i2)
+            => new Complex(i1.x + i2.x, i1.y + i2.y);
 
-        public static Imaginary operator +(Imaginary i, double d)
-            => new Imaginary(i.x + d, i.y);
+        public static Complex operator +(Complex i, double d)
+            => new Complex(i.x + d, i.y);
 
-        public static Imaginary operator +(double d, Imaginary i)
-            => new Imaginary(i.x + d, i.y);
+        public static Complex operator +(double d, Complex i)
+            => new Complex(i.x + d, i.y);
 
-        public static Imaginary operator -(Imaginary i)
-            => new Imaginary(-i.x, -i.y);
+        public static Complex operator -(Complex i)
+            => new Complex(-i.x, -i.y);
 
-        public static Imaginary operator -(Imaginary i1, Imaginary i2)
+        public static Complex operator -(Complex i1, Complex i2)
             => i1 + -i2;
 
-        public static Imaginary operator -(Imaginary i, double d)
+        public static Complex operator -(Complex i, double d)
             => i + -d;
 
-        public static Imaginary operator -(double d, Imaginary i)
+        public static Complex operator -(double d, Complex i)
             => d + -i;
 
-        public static Imaginary operator *(double d, Imaginary i)
-            => new Imaginary(d * i.x, d * i.y);
+        public static Complex operator *(double d, Complex i)
+            => new Complex(d * i.x, d * i.y);
 
-        public static Imaginary operator *(Imaginary a, Imaginary b)
-            => new Imaginary(a.x * b.x - a.y * b.y, a.y * b.x + a.x * b.y);
+        public static Complex operator *(Complex a, Complex b)
+            => new Complex(a.x * b.x - a.y * b.y, a.y * b.x + a.x * b.y);
 
-        public static Imaginary operator *(Imaginary i, double d)
-            => new Imaginary(d * i.x, d * i.y);
+        public static Complex operator *(Complex i, double d)
+            => new Complex(d * i.x, d * i.y);
 
-        public static Imaginary operator /(Imaginary i, double d)
-            => new Imaginary(i.x / d, i.y / d);
+        public static Complex operator /(Complex i, double d)
+            => new Complex(i.x / d, i.y / d);
 
-        public static Imaginary operator /(double d, Imaginary i)
+        public static Complex operator /(double d, Complex i)
         {
             double m = Math.Pow(i.x, 2) + Math.Pow(i.y, 2);
-            return new Imaginary(d * i.x / m, -d * i.y / m);
+            return new Complex(d * i.x / m, -d * i.y / m);
         }
 
-        public static Imaginary operator /(Imaginary i1, Imaginary i2)
+        public static Complex operator /(Complex i1, Complex i2)
         {
-            if (i2 == (Imaginary)0f) throw new ArithmeticException("Divide by 0");
+            if (i2 == (Complex)0f) throw new ArithmeticException("Divide by 0");
             double m = Math.Pow(i2.x, 2) + Math.Pow(i2.y, 2);
-            return new Imaginary((i1.x * i2.x + i1.y * i2.y) / m, (i1.y * i2.x - i1.x * i2.y) / m);
+            return new Complex((i1.x * i2.x + i1.y * i2.y) / m, (i1.y * i2.x - i1.x * i2.y) / m);
         }
 
-        public static bool operator ==(Imaginary i1, Imaginary i2)
+        public static bool operator ==(Complex i1, Complex i2)
         {
             if (i1.x.Equals(i2.x) && i1.y.Equals(i2.y))
                 return true;
             return false;
         }
 
-        public static bool operator !=(Imaginary i1, Imaginary i2)
+        public static bool operator !=(Complex i1, Complex i2)
         {
             if (!(i1.x.Equals(i2.x) && i1.y.Equals(i2.y)))
                 return true;
@@ -120,11 +120,11 @@ namespace MathTool.Tool.Numbers
         }
 
         /// <summary>
-        /// Use the constructor to transform a double to an Imaginary.
+        /// Use the constructor to transform a double to an Complex.
         /// </summary>
         /// <param name="d"></param>
-        public static explicit operator Imaginary(double d)
-            => new Imaginary(d);
+        public static explicit operator Complex(double d)
+            => new Complex(d);
 
         /// <summary>
         /// The length.
@@ -142,9 +142,9 @@ namespace MathTool.Tool.Numbers
         {
             if (obj == null)
                 return false;
-            if (obj.GetType() != typeof(Imaginary))
+            if (obj.GetType() != typeof(Complex))
                 return false;
-            Imaginary other = (Imaginary)obj;
+            Complex other = (Complex)obj;
             if ((x == other.x) && (y == other.y))
                 return true;
             return false;

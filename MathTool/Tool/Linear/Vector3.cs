@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MathTool.Tool.Coordinates;
 
-namespace MathTool.Tool
+namespace MathTool.Tool.Linear
 {
     public struct Vector3
     {
